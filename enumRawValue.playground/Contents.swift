@@ -3,26 +3,28 @@
 import AppKit
 import PlaygroundSupport
 
-enum StatusCode {
-    case success
-    case unauthorized
-    case forbidden
-    case notFound
+enum StatusCode: Int {
+    case success = 200
+    case unauthorized = 401
+    case forbidden = 403
+    case notFound = 404
 }
 
 func prettyPrint(code: StatusCode) -> String {
     switch code {
     case .success:
-        return("200: Success")
+        return("\(code.rawValue): Success")
     case .unauthorized:
-        return("401: Unauthorized")
+        return("\(code.rawValue): Unauthorized")
     case .forbidden:
-        return("403: Forbidden")
+        return("\(code.rawValue): Forbidden")
     case .notFound:
-        return("404: Not Found")
+        return("\(code.rawValue): Not Found")
     }
 }
 print(prettyPrint(code: StatusCode.success)) //should return "200: Success"
 print(prettyPrint(code: StatusCode.unauthorized)) //should return "401: Unauthorized"
 print(prettyPrint(code: StatusCode.forbidden)) //should return "403: Forbidden"
 print(prettyPrint(code: StatusCode.notFound))// should return "404: Not Found"
+
+
